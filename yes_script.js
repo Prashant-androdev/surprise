@@ -1,32 +1,31 @@
-document.querySelector(".celebrate_btn").addEventListener("click", () => {
-    const confettiContainer = document.querySelector(".confetti");
-    confettiContainer.innerHTML = "";
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.style.position = 'absolute';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.top = Math.random() * 100 + '%';
+    heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+    heart.style.animation = `float ${2 + Math.random() * 3}s ease-in-out`;
+    document.querySelector('.hearts').appendChild(heart);
+    
+    setTimeout(() => heart.remove(), 3000);
+}
 
-    for (let i = 0; i < 100; i++) {
-        const confettiPiece = document.createElement("div");
-        confettiPiece.classList.add("confetti-piece");
-        confettiPiece.style.left = `${Math.random() * 100}vw`;
-        confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        confettiPiece.style.animationDelay = `${Math.random()}s`;
-        confettiContainer.appendChild(confettiPiece);
+// Create initial celebration
+for (let i = 0; i < 50; i++) {
+    setTimeout(createHeart, i * 100);
+}
+
+// Add continuous hearts on click
+document.addEventListener('click', () => {
+    for (let i = 0; i < 10; i++) {
+        createHeart();
     }
 });
 
-/* Confetti Styles */
-const confettiCSS = document.createElement("style");
-confettiCSS.innerHTML = `
-@keyframes fall {
-    0% { transform: translateY(-100vh) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(720deg); }
-}
-
-.confetti-piece {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: hsl(${Math.random() * 360}, 100%, 50%);
-    opacity: 0.7;
-    animation: fall linear infinite;
-}
-`;
-document.head.appendChild(confettiCSS);
+// Initial animation
+document.querySelector('.container').style.opacity = 0;
+setTimeout(() => {
+    document.querySelector('.container').style.transition = 'opacity 1s ease, transform 1s ease';
+    document.querySelector('.container').style.opacity = 1;
+}, 100);

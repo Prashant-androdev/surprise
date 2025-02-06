@@ -1,105 +1,95 @@
-/* General Styles */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    position: relative;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Floating effect */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Glowing animation */
-@keyframes glow {
-    0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4081, 0 0 15px #ff4081; }
-    50% { text-shadow: 0 0 10px #fff, 0 0 20px #ff4081, 0 0 30px #ff4081; }
-    100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4081, 0 0 15px #ff4081; }
-}
-
-/* Container */
-.container {
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Header Text */
-.header_text {
-    font-size: 3.5em;
-    color: #fff;
-    text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.8);
-    animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
-}
-
-/* Gif Container */
-.gif_container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out 0.5s forwards;
-}
-
-.gif_container img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    transform: scale(0.9);
-    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* Hover Effect */
-.gif_container img:hover {
-    transform: scale(1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Celebrate Button */
-.celebrate_btn {
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 25px;
-    background: #ff4081;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-}
-
-.celebrate_btn:hover {
-    background: #ff80ab;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Confetti Animation */
-.confetti {
-    position: fixed;
+.hearts, .confetti {
+    position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    overflow: hidden;
+    z-index: 0;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+    animation: float 3s ease-in-out infinite;
+}
+
+.header_text {
+    font-size: 3.5em;
+    color: #ff4757;
+    margin-bottom: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.gif_container img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gif_container img:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.message {
+    font-size: 1.5em;
+    color: #ff4757;
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(255, 71, 87, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.6); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem;
+        margin: 15px;
+    }
+    
+    .header_text {
+        font-size: 2.5em;
+    }
+    
+    .message {
+        font-size: 1.2em;
+    }
+    
+    .gif_container img {
+        max-width: 300px;
+    }
 }
