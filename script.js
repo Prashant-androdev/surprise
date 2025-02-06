@@ -1,15 +1,25 @@
 const messages = [
-    "Are you sure?",
-    "Really sure??",
-    "Pookie please...",
-    "Think again!",
-    "I'll be so sad...",
+    "Are you sure? 😢",
+    "Really sure?? 🤨",
+    "Pookie please... 🥺",
+    "Think again! 🤔",
+    "I'll be so sad... 😭",
     "My heart will break 💔",
-    "Last chance!",
-    "Okay, I'll stop...",
-    "Just kidding! PLEASE!",
-    "FINE, I'll ask nicely... ❤️"
+    "Last chance! ⚠️",
+    "Okay, I'll stop... 😞",
+    "Just kidding! PLEASE! 🙏",
+    "FINE, I'll ask nicely... ❤️",
+    "But we are perfect together! 💑",
+    "What did I do wrong? 😭",
+    "You're breaking my heart! 💘",
+    "Even Romeo wouldn't give up! 😤",
+    "Think about our future! 🏡",
+    "I have chocolates... 🍫",
+    "I have flowers too... 🌹",
+    "You're making me nervous! 😳",
+    "How could you say no to this face? 🥺",
 ];
+
 
 let messageIndex = 0;
 let yesSize = 1.5;
